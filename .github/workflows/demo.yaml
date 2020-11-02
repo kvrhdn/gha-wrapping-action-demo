@@ -16,3 +16,17 @@ jobs:
           job-status: ${{ job.status }}
 
       - run: sleep 5
+
+  demo-failing:
+    name: Demo run (failing)
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run my action
+        uses: ./
+        with:
+          job-status: ${{ job.status }}
+
+      - run: exit 1
